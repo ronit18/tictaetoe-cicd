@@ -104,11 +104,11 @@ jobs:
           NEW_IMAGE="${REGISTRY}/${GITHUB_REPOSITORY}:${IMAGE_TAG}"
           
           # Update the deployment file directly
-          sed -i "s|image: ${REGISTRY}/.*|image: ${NEW_IMAGE}|g" kubernetes/deployment.yaml
+          sed -i "s|image: ${REGISTRY}/.*|image: ${NEW_IMAGE}|g" k8s/deployment.yaml
           
           # Verify the change
           echo "Updated deployment to use image: ${NEW_IMAGE}"
-          grep -A 1 "image:" kubernetes/deployment.yaml
+          grep -A 1 "image:" k8s/deployment.yaml
       
       - name: Commit and push changes
         run: |
